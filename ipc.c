@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 typedef void f_t(int i, int xi);
 
@@ -25,6 +26,12 @@ int main(int argc, char *argv[])
   gen(1,2,20,printer);
 
   cid=fork();
+  if (cid<0) {
+    perror("fork");
+    exit(EXIT_FAILURE);
+  };
+  if (cid==0) { child_proc(); }
+  if (cid>0) { parent_proc(); }
 
   return 0;
 }
