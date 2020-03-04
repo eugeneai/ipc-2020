@@ -12,18 +12,19 @@ void gen(int start, int diff, int num, f_t f) {
   }
 }
 
+void printer(int i, int xi) {
+  printf("%i-th element is %i\n", i, xi);
+}
+
 void child_proc() {
   printf("Hello from child!\n");
 }
 
 void parent_proc() {
   printf("Hello from parent!\n");
+  gen(1,2,20,printer);
 }
 
-
-void printer(int i, int xi) {
-  printf("%i-th element is %i\n", i, xi);
-}
 
 int main(int argc, char *argv[])
 {
@@ -31,8 +32,6 @@ int main(int argc, char *argv[])
   int pid=getpid();
 
   printf("Hello, World!\n");
-  parent_proc();
-  gen(1,2,20,printer);
 
   cid=fork();
   if (cid<0) {
