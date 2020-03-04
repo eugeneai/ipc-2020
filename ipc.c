@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 typedef void f_t(int i, int xi);
 
@@ -16,7 +18,13 @@ void printer(int i, int xi) {
 
 int main(int argc, char *argv[])
 {
+  int cid;
+  int pid=getpid();
+
   printf("Hello, World!\n");
   gen(1,2,20,printer);
+
+  cid=fork();
+
   return 0;
 }
