@@ -9,6 +9,14 @@ void gen(int start, int diff, int num, f_t f) {
   }
 }
 
+void child_proc() {
+  printf("Hello from child!\n");
+}
+
+void parent_proc() {
+  printf("Hello from parent!\n");
+}
+
 
 void printer(int i, int xi) {
   printf("%i-th element is %i\n", i, xi);
@@ -17,6 +25,7 @@ void printer(int i, int xi) {
 int main(int argc, char *argv[])
 {
   printf("Hello, World!\n");
+  parent_proc();
   gen(1,2,20,printer);
   return 0;
 }
